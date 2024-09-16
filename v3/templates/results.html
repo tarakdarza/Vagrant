@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats du Modèle</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Résultats du modèle</h1>
+        <p><strong>Accuracy :</strong> {{ accuracy }}</p>
+        <pre>{{ report }}</pre>
+        
+        <h2>Graphiques</h2>
+
+        <!-- Matrice de confusion -->
+        <div>
+            <h3>Matrice de confusion</h3>
+            <img src="/static/output/confusion_matrix.png" alt="Matrice de confusion">
+        </div>
+
+        <!-- Distribution des caractéristiques -->
+        <div>
+            <h3>Distribution des caractéristiques</h3>
+            <img src="/static/output/feature_distribution.png" alt="Distribution des caractéristiques">
+        </div>
+
+        <!-- Distribution des classes -->
+        <div>
+            <h3>Distribution des classes</h3>
+            <img src="/static/output/class_distribution.png" alt="Distribution des classes">
+        </div>
+
+        <!-- Courbe ROC (si applicable) -->
+        {% if roc_curve_exists %}
+        <div>
+            <h3>Courbe ROC (si applicable)</h3>
+            <img src="/static/output/roc_curve.png" alt="Courbe ROC">
+        </div>
+        {% else %}
+        <p>La classification n'est pas binaire, courbe ROC non disponible.</p>
+        {% endif %}
+
+        <div>
+            <a href="/"><button>Revenir à l'accueil</button></a>
+        </div>
+    </div>
+</body>
+</html>
